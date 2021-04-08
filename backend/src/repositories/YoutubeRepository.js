@@ -16,7 +16,7 @@ function ytXmlDataProccess(data) {
     else
       tag = tag[0];
     var dt = new Date(published[0]);
-    let date = dt.getFullYear() + "-" + dt.getMonth() + "-" + dt.getDate();
+    let date = dt.getFullYear() + "-" + (dt.getMonth()+1) + "-" + dt.getDate();
     return result = {
       title: title[0],
       videoid: videoid,

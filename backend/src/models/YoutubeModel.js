@@ -14,3 +14,19 @@ exports.getChannelRecentInfo = channelId => {
     .then(data => parser.parseStringPromise(data))
     .catch(() => false);
 };
+
+/**
+ * 獲取頻道最近影片資訊
+ * @param {String} headShotUrl 頻道ID
+ * @returns {Promise<Array|Boolean>} return false on failure
+ */
+exports.getHeadShot = headShot => {
+  return axios
+    .get(url)
+    .then(res => res.data)
+    .then(res => {
+      let urls = res.match(regex);
+      let url = urls.map(url => url.replace(/"/g, "")).filter(url => /^https:.*?rj$/.test(url));
+      return url.pop();
+    });
+};
